@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    textShadow: "2px 2px 5px black"
+    textShadow: "2px 2px 5px black",
   },
 });
 
@@ -35,7 +35,7 @@ function MainCard() {
     const response = await fetch("/api/data");
     const body = await response.json();
     if (response.status === 200) {
-      setLine("\"" + body + "\"");
+      setLine('"' + body + '"');
     } else {
       console.log(body.message);
     }
