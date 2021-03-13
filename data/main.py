@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import csv
 
 urls = ["https://pickupline.net/food-pick-up-lines/chipotle-pick-up-lines/", "https://pickupline.net/food-pick-up-lines/subway-pick-up-lines/", "https://pickupline.net/character-based-pick-lines/superheroes-villains-pick-up-lines/"]
 url_base = "https://pickupline.net/"
@@ -21,5 +22,6 @@ for topic in topics:
     print()
 
 with open('test.csv', 'w', newline='') as file:
-    file.write(','.join(row))
+    writer = csv.writer(file)
+    writer.writerow(row)
 
