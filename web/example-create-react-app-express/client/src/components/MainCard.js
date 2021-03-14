@@ -29,9 +29,13 @@ const useStyles = makeStyles({
 function MainCard() {
   const classes = useStyles();
   const [line, setLine] = React.useState("");
+  const url = "https://amc51.host.cs.st-andrews.ac.uk/mi_flute.mp3";
 
   const handleClick = async (e) => {
     e.preventDefault();
+    const audio = document.getElementById("audio");
+    audio.volume = 0.03;
+    audio.play();
     const response = await fetch("/api/data");
     const body = await response.json();
     if (response.status === 200) {
@@ -43,6 +47,7 @@ function MainCard() {
 
   const image =
     "https://media.gq-magazine.co.uk/photos/5e6270c2f399d1000844382b/master/pass/20200304-April-cover-06.jpg";
+
   return (
     <Box position="relative" textAlign="center" paddingTop="2rem">
       <Typography
@@ -67,6 +72,9 @@ function MainCard() {
           </Box>
         </CardActionArea>
       </Card>
+      <audio id="audio">
+        <source src={url} type="audio/mpeg" />
+      </audio>
     </Box>
   );
 }
