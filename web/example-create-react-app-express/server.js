@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const fs = require("fs");
+=======
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const fs = require('fs');
+>>>>>>> main
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -10,6 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // API calls
+<<<<<<< HEAD
 app.get("/api/data", (req, res) => {
   console.log("running handler");
   fs.readFile("./generated_lines.txt", "utf8", (err, data) => {
@@ -20,6 +28,18 @@ app.get("/api/data", (req, res) => {
       let parsedData = data.split("\n");
       let randomIndex = Math.floor(Math.random() * parsedData.length);
       res.send(JSON.stringify(parsedData[randomIndex]));
+=======
+app.get('/api/data', (req, res) => {
+  console.log('running handler')
+  fs.readFile('./generated_lines.txt', 'utf8', (err, data) => {
+    if(err){
+      console.error(err);
+      res.send("Error")
+    }else{
+      let parsedData = data.split('\n');
+      let arrayToString = JSON.stringify(Object.assign({}, parsedData));
+      res.send(arrayToString);
+>>>>>>> main
     }
   });
 });
